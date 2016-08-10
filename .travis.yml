@@ -2,6 +2,10 @@ sudo: required
 
 language: go
 
+go:
+ - 1.5
+ - 1.6
+
 services:
 - docker
 
@@ -10,17 +14,13 @@ install:
 
 script:
 - go version
-- echo $GLOBAL_VAR $FOO $BAR $FAZ $BOO
+- echo $CROSSDOCK
 
 env:
   global:
     - GLOBAL_VAR=foo
-  matrix:
-    - FOO=true BAR=False
 
 matrix:
   include:
     - go: 1.5
-      env: FAZ=true BOO=False
-    - go: 1.6
-      env: env: FAZ=true BOO=true
+      env: CROSSDOCK=1
